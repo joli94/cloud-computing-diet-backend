@@ -13,8 +13,11 @@ public class ProjectConfig {
         return routeLocatorBuilder.routes()
                 .route("diets-microservice", rt-> rt.path("/diets/**", "/foods/**", "/ingredients/**")
                         .uri("lb://diets-microservice"))
-                .route("users-microservice", rt-> rt.path("/users/**", "/cities/**, /countries/**", "/weights/**", "/happiness/**")
-                        .uri("lb://users-microservice"))
+                .route("payments-microservice", rt-> rt.path("/payments/**")
+                        .uri("lb://payments-microservice"))
+
+                /*.route("users-microservice", rt-> rt.path("/users/**", "/cities/**, /countries/**", "/weights/**", "/happiness/**")
+                        .uri("lb://users-microservice"))*/
                 .build();
 
     }
