@@ -15,7 +15,7 @@ public class ProjectConfig {
                         .uri("lb://diets-microservice"))
                 .route("payments-microservice", rt-> rt.path("/payments/**")
                         .uri("lb://payments-microservice"))
-                .route("users-microservice", rt-> rt.path("/accounts/**","/cities/**", "/countries/**", "/registration/**", "/users/**q")
+                .route("users-microservice", rt-> rt.path("/accounts/**","/cities/**", "/countries/**", "/registration/**", "/users/**")
                         .uri("lb://users-microservice"))
                 .build();
 
