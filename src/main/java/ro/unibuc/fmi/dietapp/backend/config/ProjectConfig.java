@@ -16,6 +16,7 @@ public class ProjectConfig {
                 .route("payments-microservice", rt-> rt.path("/payments/**")
                         .uri("lb://payments-microservice"))
                 .route("users-microservice", rt-> rt.path("/accounts/**","/cities/**", "/happiness/**","/registration/**", "/users/**", "/weights/**")
+                        .filters(f -> f.addRequestHeader("Content-Type", "application/json"))
                         .uri("lb://users-microservice"))
                 .build();
 
