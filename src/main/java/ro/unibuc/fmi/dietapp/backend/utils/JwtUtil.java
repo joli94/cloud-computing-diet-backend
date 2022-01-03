@@ -12,7 +12,9 @@ public class JwtUtil {
 	@Value("${jwt.secret}")
 	private String jwtSecret;
 
-	public Claims getClaims(final String token) {
+	public Claims getClaims(final String token_in) {
+		final String token = token_in.substring(1, token_in.length() - 1);
+
 		try {
 			Claims body = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
 			return body;
@@ -22,7 +24,9 @@ public class JwtUtil {
 		return null;
 	}
 
-	public void validateToken(final String token) throws JwtTokenMalformedException, JwtTokenMissingException {
+	public void validateToken(final String token_in) throws JwtTokenMalformedException, JwtTokenMissingException {
+		final String token = token_in.substring(1, token_in.length() - 1);
+
 		try {
 			Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
 		} catch (SignatureException ex) {
