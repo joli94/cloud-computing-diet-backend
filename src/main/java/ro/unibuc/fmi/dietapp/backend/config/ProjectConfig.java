@@ -1,6 +1,5 @@
 package ro.unibuc.fmi.dietapp.backend.config;
 
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
@@ -17,15 +16,12 @@ public class ProjectConfig {
     public RouteLocator gatewayRoutes(RouteLocatorBuilder routeLocatorBuilder)
     {
         return routeLocatorBuilder.routes()
-                .route("authentication-microservice", rt-> rt.path("/auth/**")
+                .route("auth-microservice", rt-> rt.path("/auth/**")
                         .filters(f -> f.filter(filter))
-                        .uri("lb://authentication-microservice"))
+                        .uri("lb://auth-microservice"))
                 .route("diets-microservice", rt-> rt.path("/diets/**", "/foods/**", "/ingredients/**")
                         .filters(f -> f.filter(filter))
                         .uri("lb://diets-microservice"))
-                .route("optimums-microservice", rt-> rt.path("/optimums/**")
-                        .filters(f -> f.filter(filter))
-                        .uri("lb://optimums-microservice"))
                 .route("payments-microservice", rt-> rt.path("/payments/**")
                         .filters(f -> f.filter(filter))
                         .uri("lb://payments-microservice"))
