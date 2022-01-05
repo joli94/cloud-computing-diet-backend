@@ -14,7 +14,7 @@ import org.springframework.web.server.WebFilterChain;
 public class CorsConfig {
     private static final String ALLOWED_HEADERS = "x-requested-with, authorization, Content-Type, Content-Length, Authorization, credential, X-XSRF-TOKEN";
     private static final String ALLOWED_METHODS = "GET, PUT, POST";
-    private static final String ALLOWED_ORIGIN = "http://localhost:3000";
+    private static final String ALLOWED_ORIGIN = "http://67.207.75.49";
     private static final String MAX_AGE = "7200"; //2 hours (2 * 60 * 60)
 
     @Bean
